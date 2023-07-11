@@ -2,12 +2,7 @@
 {
     internal class Program
     {
-        static double CalcularArea(double lado, double altura)
-        {
-            double resultado;
-            resultado = lado + (lado + Math.Sqrt(4 * Math.Pow(altura, 2) + Math.Pow(lado, 2)));
-            return resultado;
-        }
+        
 
         static void Main(string[] args)
         {
@@ -17,7 +12,7 @@
             int cantidadpiramides;
             bool seguir;
             double volumen;
-            seguir = false;
+            seguir = true;
             cantidadpiramides = 0;
             do
             {
@@ -28,17 +23,31 @@
                 if (altura > 0 && lado > 0)
                 {
                     area =CalcularArea(lado, altura);
-                    volumen = (Math.Pow(lado, 2) * altura) / 3;
+                    volumen = CalcularVolumen(lado, altura);
                     cantidadpiramides ++;
                     Console.WriteLine($"el area de la piramide es {Math.Truncate(area)}");
                     Console.WriteLine($"el volumen de la piramide es {Math.Truncate(volumen)}");
                 }
                 else
                 {
-                    seguir = true;
+                    seguir = false;
                 }
-            } while (!(seguir));
+            } while (seguir);
             Console.WriteLine($"Se ingresaron {cantidadpiramides} piramides");
+        }
+
+        private static double CalcularVolumen(double lado, double altura)  
+        {
+            double resultado;
+            resultado = (Math.Pow(lado, 2) * altura) / 3;
+            return resultado;
+        }
+
+        private static double CalcularArea(double lado, double altura)
+        {
+            double resultado;
+            resultado = lado + (lado + Math.Sqrt(4 * Math.Pow(altura, 2) + Math.Pow(lado, 2)));
+            return resultado;
         }
     }
 }
