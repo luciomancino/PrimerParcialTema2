@@ -6,19 +6,16 @@
 
         static void Main(string[] args)
         {
-            double altura;
-            double area;
-            double lado;
+            double altura, area, lado, volumen;
             int cantidadpiramides;
             bool seguir;
-            double volumen;
             seguir = true;
             cantidadpiramides = 0;
             do
             {
-                Console.Write("ingrese la altura de la piramide (0 en ambos valores para terminar)");
+                Console.Write("ingrese la altura de la piramide (0 en ambos valores para terminar):");
                 altura = Double.Parse(Console.ReadLine());
-                Console.Write("ingrese el lado de la base de la piramide (0 en ambos valores para terminar)");
+                Console.Write("ingrese el lado de la base de la piramide (0 en ambos valores para terminar):");
                 lado = Double.Parse(Console.ReadLine());
                 if (altura > 0 && lado > 0)
                 {
@@ -33,6 +30,7 @@
                     seguir = false;
                 }
             } while (seguir);
+            Console.WriteLine("Los valores deben ser positivos");
             Console.WriteLine($"Se ingresaron {cantidadpiramides} piramides");
         }
 
@@ -49,5 +47,6 @@
             resultado = lado + (lado + Math.Sqrt(4 * Math.Pow(altura, 2) + Math.Pow(lado, 2)));
             return resultado;
         }
+    
     }
 }
